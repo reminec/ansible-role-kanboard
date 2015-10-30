@@ -1,0 +1,49 @@
+---
+
+- name: Install apache2 if needed
+  apt: name="{{ item }}" state=present
+  with_items: kanboard_apache2_packages
+  when: kanboard_install_apache2
+
+- name: Install requirements
+  apt: name="{{ item }}" state=present
+  with_items: kanboard_dependencies
+
+- name: Download kanboard archive
+  get_url:
+      url="{{ kanboard_release_url }}"
+      dest="/tmp/kanboard-latest.zip"
+
+- name: Extract kanboard release
+  unarchive: src=/tmp/kanboard-latest.zip dest=/tmp copy=no
+
+- name: Remove kanboard archive
+  command: rm -f /tmp/kanboard-latest.zip
+
+- name: Check if kanboard is already installed
+  stat: path="{{ kanboard_path }}"
+  register: installed
+
+- name: Moving existing installation to temporay folder
+  command: mv {{ kanboard_path }} {{ kanboard_path}}.old
+  when: installed.stat.isdir is defined and installed.stat.isdir
+
+- name: Moving new installation to destination folder
+  command: mv /tmp/kanboard {{ kanboard_path }}
+
+- name: Remove new data folder
+  command: rm -Rf {{ kanboard_path }}/data
+  when: installed.stat.isdir is defined and installed.stat.isdir
+
+- name: Restore data from previous installation
+  command: mv {{ kanboard_path }}.old/data {{ kanboard_path }}/data
+  when: installed.stat.isdir is defined and installed.stat.isdir
+
+- name: Remove previous installation
+  command: rm -Rf {{ kanboard_path }}.old
+  when: installed.stat.isdir is defined and installed.stat.isdir
+
+- name: Fix permissions on kanboard folder
+  command: chown -R {{ kanboard_chmod_user }}:{{ kanboard_chmod_group }} {{ kanboard_path }}
+
+
