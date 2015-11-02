@@ -40,7 +40,7 @@ kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
 kanboard_use_github_auth: true
 kanboard_github_client_id: '' # change it
 kanboard_github_client_secret: '' # change it
-
+```
 
 ### Other default usefull vars
 ```yaml
