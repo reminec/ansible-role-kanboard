@@ -34,6 +34,16 @@ kanboard_gitlab_oauth_token_url: 'https://gitlab.com/oauth/token'
 kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
 ```
 
+### Configuring a github oAuth instance
+```yaml
+# Gitlab related vars
+kanboard_use_gitlab_auth: true
+kanboard_gitlab_client_id: '' # change it
+kanboard_gitlab_client_secret: '' # change it
+kanboard_gitlab_oauth_authorize_url: 'https://gitlab.com/oauth/authorize'
+kanboard_gitlab_oauth_token_url: 'https://gitlab.com/oauth/token'
+kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
+
 ### Other default usefull vars
 ```yaml
 kanboard_path: /var/www
