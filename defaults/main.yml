@@ -1,6 +1,9 @@
 ---
 # defaults file for roles/reminec.kanboard/
 
+################
+# Install vars
+################
 kanboard_path: /var/www
 kanboard_release_url: http://kanboard.net/kanboard-latest.zip
 kanboard_chmod_user: www-data
@@ -16,3 +19,22 @@ kanboard_apache2_packages:
  - libapache2-mod-php5
 
 kanboard_install_apache2: false
+
+kanboard_manage_config: true
+
+################
+# Configuration vars
+################
+
+# general config vars
+kanboard_enable_url_rewrite: false
+
+
+# Gitlab related vars
+kanboard_use_gitlab_auth: false
+kanboard_gitlab_client_id: ''
+kanboard_gitlab_client_secret: ''
+kanboard_gitlab_oauth_authorize_url: 'https://gitlab.com/oauth/authorize'
+kanboard_gitlab_oauth_token_url: 'https://gitlab.com/oauth/token'
+kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
+

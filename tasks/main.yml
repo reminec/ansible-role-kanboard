@@ -1,3 +1,4 @@
 ---
 # tasks file for roles/reminec.kanboard/
-- include: install.yml tags=kanboard
+- include: install.yml tags=kanboard_install
+- include: configure.yml tags=kanboard_configure

@@ -1,38 +1,60 @@
-Role Name
-=========
+# Ansible Role kanboard
+Install or update to the latest kanboard version.
 
-A brief description of the role goes here.
+This role can also install apache2 to run your kanboard installation - disabled by default
 
-Requirements
-------------
+## Requirements
+None.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Role Variables
 
-Role Variables
---------------
+All variables are optionnals
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Install apache2
+By default, the role let you install your preffered webserver.
+If you want install apache2, change this var to true
 
-Dependencies
-------------
+```yaml
+kanboard_install_apache2: true
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+### Enable url rewrite on kanboard
+```yaml
+kanboard_enable_url_rewrite: false
+```
 
-Example Playbook
-----------------
+### Configuring a gitlab oAuth instance
+```yaml
+# Gitlab related vars
+kanboard_use_gitlab_auth: true
+kanboard_gitlab_client_id: '' # change it
+kanboard_gitlab_client_secret: '' # change it
+kanboard_gitlab_oauth_authorize_url: 'https://gitlab.com/oauth/authorize'
+kanboard_gitlab_oauth_token_url: 'https://gitlab.com/oauth/token'
+kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
+```
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### Other default usefull vars
+```yaml
+kanboard_path: /var/www
+kanboard_release_url: http://kanboard.net/kanboard-latest.zip
+kanboard_chmod_user: www-data
+kanboard_chmod_group: www-data
+```
 
-    - hosts: servers
+## Dependencies
+
+None.
+
+## Example Playbook
+
+
+    - hosts: kanboard
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: reminec.kanboard }
 
-License
--------
+## License
+MIT - [See LICENSE](LICENSE)
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## Author Information
+This role was created by [Reminec](https://github.com/reminec)
