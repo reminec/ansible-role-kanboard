@@ -38,3 +38,10 @@ kanboard_gitlab_oauth_authorize_url: 'https://gitlab.com/oauth/authorize'
 kanboard_gitlab_oauth_token_url: 'https://gitlab.com/oauth/token'
 kanboard_gitlab_api_url: 'https://gitlab.com/api/v3/'
 
+# Github related vars
+kanboard_use_github_auth: false
+kanboard_github_client_id: ''
+kanboard_github_client_secret: ''
+kanboard_github_oauth_authorize_url: 'https://github.com/login/oauth/authorize'
+kanboard_github_oauth_token_url: 'https://github.com/login/oauth/access_token'
+kanboard_github_api_url: 'https://api.github.com/'

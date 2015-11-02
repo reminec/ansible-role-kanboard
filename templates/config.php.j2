@@ -136,22 +136,22 @@ define('GOOGLE_CLIENT_ID', '');
 define('GOOGLE_CLIENT_SECRET', '');
 
 // Enable/disable GitHub authentication
-define('GITHUB_AUTH', false);
+define('GITHUB_AUTH', {{ kanboard_use_github_auth }});
 
 // GitHub client id (Copy it from your settings -> Applications -> Developer applications)
-define('GITHUB_CLIENT_ID', '');
+define('GITHUB_CLIENT_ID', '{{ kanboard_github_client_id }}');
 
 // GitHub client secret key (Copy it from your settings -> Applications -> Developer applications)
-define('GITHUB_CLIENT_SECRET', '');
+define('GITHUB_CLIENT_SECRET', '{{ kanboard_github_client_secret }}');
 
 // Github oauth2 authorize url
-define('GITHUB_OAUTH_AUTHORIZE_URL', 'https://github.com/login/oauth/authorize');
+define('GITHUB_OAUTH_AUTHORIZE_URL', '{{ kanboard_github_oauth_authorize_url }}');
 
 // Github oauth2 token url
-define('GITHUB_OAUTH_TOKEN_URL', 'https://github.com/login/oauth/access_token');
+define('GITHUB_OAUTH_TOKEN_URL', '{{ kanboard_github_oauth_token_url }}');
 
 // Github API url (don't forget the trailing slash)
-define('GITHUB_API_URL', 'https://api.github.com/');
+define('GITHUB_API_URL', '{{ kanboard_github_api_url }}');
 
 // Enable/disable Gitlab authentication
 define('GITLAB_AUTH', {{ kanboard_use_gitlab_auth }});
