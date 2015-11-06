@@ -21,7 +21,7 @@
   command: rm -f /tmp/kanboard-latest.zip
 
 - name: Check if kanboard is already installed
-  stat: path="{{ kanboard_path }}"
+  stat: path="{{ kanboard_path }}/data"
   register: installed
 
 - name: Moving existing installation to temporay folder
