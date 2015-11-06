@@ -1,4 +1,8 @@
 ---
 # tasks file for roles/reminec.kanboard/
+- include: install_apache2.yml tags=kanboard_install
+  when: kanboard_install_apache2
 - include: install.yml tags=kanboard_install
+- include: configure_apache2.yml tags=kanboard_configure
+  when: kanboard_install_apache2
 - include: configure.yml tags=kanboard_configure

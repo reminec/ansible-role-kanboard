@@ -1,0 +1,23 @@
+# Figure out what version of Apache is installed.
+- name: Get installed version of Apache.
+  shell: "apache2 -v"
+  changed_when: false
+  always_run: yes
+  register: _apache_version
+
+- name: Create apache_version variable.
+  set_fact:
+    apache_version: "{{ _apache_version.stdout.split()[2].split('/')[1] }}"
+
+- include_vars: apache2.2.yml
+  when: "apache_version.split('.')[1] == '2'"
+
+- include_vars: apache2.4.yml
+  when: "apache_version.split('.')[1] == '4'"
+
+- name: Enable apache2 mod rewrite
+  apache2_module: state=present name=rewrite
+
+- name: Configure apache2
+  template: src="etc-apache2-sites-available/{{ kanboard_apache_default_vhost_filename }}.j2" dest="/etc/apache2/sites-available/{{ kanboard_apache_default_vhost_filename }}"
+  notify: restart apache2

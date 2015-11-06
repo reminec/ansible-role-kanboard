@@ -1,0 +1,5 @@
+- name: Install apache2 if needed
+  apt: name="{{ item }}" state=present
+  with_items: kanboard_apache2_packages
+
+
