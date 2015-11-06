@@ -21,7 +21,7 @@ kanboard_install_apache2: true
 
 ### Enable url rewrite on kanboard
 ```yaml
-kanboard_enable_url_rewrite: false
+kanboard_enable_url_rewrite: true
 ```
 
 ### Configuring a gitlab oAuth instance
