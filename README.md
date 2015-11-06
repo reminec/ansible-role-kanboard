@@ -1,4 +1,5 @@
 # Ansible Role kanboard
+[![Build Status](https://travis-ci.org/reminec/ansible-role-kanboard.svg?branch=master)](https://travis-ci.org/reminec/ansible-role-kanboard)
 Install or update to the latest kanboard version.
 
 This role can also install apache2 to run your kanboard installation - disabled by default
